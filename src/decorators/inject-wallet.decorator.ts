@@ -1,6 +1,6 @@
 import { Inject } from "@nestjs/common";
+import { getWalletToken } from "../utils/token.util";
 
-export function InjectWallet(wallet: string | any) {
-  // will be implemented ...
-  return Inject();
+export function InjectWallet(name: string) {
+  return Inject(getWalletToken(name));
 }
