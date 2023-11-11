@@ -18,10 +18,12 @@
     "ethersjs",
     "ethers.js",
     "evm",
+    "solidity",
     "ethereum",
     "nest",
     "nestjs",
     "nest.js",
+    "web3",
     "blockchain"
   ],
   "scripts": {
