@@ -1,11 +1,9 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { BlockListener } from "./listeners/block.listener";
 import { EventListener } from "./listeners/event.listener";
 
 @Injectable()
 export class EthersRegistry {
-  // private readonly logger = new Logger(EthersRegistry.name);
-
   private readonly blockListeners = new Map<string, BlockListener>();
   private readonly eventListeners = new Map<string, EventListener>();
 
@@ -14,21 +12,21 @@ export class EthersRegistry {
   }
 
   hasEventListener(name: string): boolean {
-    return this.blockListeners.has(name);
+    return this.eventListeners.has(name);
   }
 
-  getBlockListeners(): string[] {
+  getBlockListenerNames(): string[] {
     return [...this.blockListeners.keys()];
   }
 
-  getEventListeners(): string[] {
-    return [...this.blockListeners.keys()];
+  getEventListenerNames(): string[] {
+    return [...this.eventListeners.keys()];
   }
 
   getBlockListener(name: string): BlockListener {
     const ref = this.blockListeners.get(name);
     if (!ref) {
-      throw new Error("");
+      throw new Error("BlockListner with this name desn't exist");
     }
     return ref;
   }
@@ -36,7 +34,7 @@ export class EthersRegistry {
   getEventListener(name: string): EventListener {
     const ref = this.eventListeners.get(name);
     if (!ref) {
-      throw new Error("");
+      throw new Error("EventListner with this name desn't exist");
     }
     return ref;
   }
@@ -44,7 +42,7 @@ export class EthersRegistry {
   addBlockListener(name: string, listener: BlockListener): void {
     const ref = this.blockListeners.get(name);
     if (ref) {
-      throw new Error("");
+      throw new Error("BlockListner with this name already exists");
     }
     if (!listener.isListening()) {
       listener.start();
@@ -55,7 +53,7 @@ export class EthersRegistry {
   addEventListener(name: string, listener: EventListener): void {
     const ref = this.eventListeners.get(name);
     if (ref) {
-      throw new Error("");
+      throw new Error("EventListner with this name already exists");
     }
     if (!listener.isListening()) {
       listener.start();
@@ -66,7 +64,7 @@ export class EthersRegistry {
   deleteBlockListener(name: string): void {
     const ref = this.blockListeners.get(name);
     if (!ref) {
-      throw new Error("");
+      throw new Error("BlockListner with this name desn't exist");
     }
     if (ref.isListening()) {
       ref.stop();
@@ -77,7 +75,7 @@ export class EthersRegistry {
   deleteEventListener(name: string): void {
     const ref = this.eventListeners.get(name);
     if (!ref) {
-      throw new Error("");
+      throw new Error("EventListner with this name desn't exist");
     }
     if (ref.isListening()) {
       ref.stop();

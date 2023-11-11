@@ -64,16 +64,15 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
   }
 
   private unsubscribeOnBlocks() {
-    const listeners = this.ethersRegistry.getBlockListeners();
-    for (const listener of listeners) {
-      this.ethersRegistry.deleteBlockListener(listener);
-    }
+    this.ethersRegistry
+      .getBlockListenerNames()
+      .forEach(name => this.ethersRegistry.deleteBlockListener(name));
   }
 
   private unsubscribeOnEvents() {
     this.ethersRegistry
-      .getEventListeners()
-      .forEach(listener => this.ethersRegistry.deleteEventListener(listener));
+      .getEventListenerNames()
+      .forEach(name => this.ethersRegistry.deleteEventListener(name));
   }
 
   addOnBlock(methodRef: Function, options: OnBlockMetadata, name: string = uuidv4()) {

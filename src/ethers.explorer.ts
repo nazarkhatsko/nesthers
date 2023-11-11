@@ -85,13 +85,13 @@ export class EthersExplorer implements OnModuleInit {
     switch (typeMetadata) {
       case ListnerType.BLOCK: {
         this.logger.warn(
-          `Cannot register block listener "${wrapper.name}@${key}" because it is defined in a non static provider.`,
+          `Cannot register BlockListener "${wrapper.name}@${key}" because it is defined in a non static provider.`,
         );
         break;
       }
       case ListnerType.EVENT: {
         this.logger.warn(
-          `Cannot register event listener "${wrapper.name}@${key}" because it is defined in a non static provider.`,
+          `Cannot register EventListener "${wrapper.name}@${key}" because it is defined in a non static provider.`,
         );
         break;
       }
