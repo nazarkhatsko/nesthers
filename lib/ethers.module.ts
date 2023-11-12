@@ -7,7 +7,7 @@ import {
 import { EthersExplorer } from "./ethers.explorer";
 import { EthersOrchestrator } from "./ethers.orchestrator";
 import { EthersRegistry } from "./ethers.registry";
-import { MetadataAccessor } from "./metadata.accessor";
+import { EthersMetadataAccessor } from "./ethers-metadata.accessor";
 import { getConnectionToken } from "./utils/token.util";
 import { getConnectionProvider } from "./providers/connection.provider";
 import { getWalletProviders } from "./providers/wallet.provider";
@@ -15,13 +15,13 @@ import { getContractProviders } from "./providers/contract.provider";
 
 @Module({
   imports: [DiscoveryModule],
-  providers: [MetadataAccessor, EthersOrchestrator],
+  providers: [EthersMetadataAccessor, EthersOrchestrator],
 })
 export class EthersModule {
   static forRoot(options: EthersModuleOptions): DynamicModule {
     const connection = getConnectionProvider(options.connection);
-    const wallets = getWalletProviders(options.wallets || [], getConnectionToken()); // options.connection.name
-    const contracts = getContractProviders(options.contracts || [], getConnectionToken()); // options.connection.name
+    const wallets = getWalletProviders(options.wallets || [], getConnectionToken(options.connection.name));
+    const contracts = getContractProviders(options.contracts || [], getConnectionToken(options.connection.name));
 
     return {
       global: true,

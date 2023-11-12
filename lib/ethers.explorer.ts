@@ -2,7 +2,7 @@ import { Injectable, OnModuleInit, Logger } from "@nestjs/common";
 import { DiscoveryService, MetadataScanner } from "@nestjs/core";
 import { InstanceWrapper } from "@nestjs/core/injector/instance-wrapper";
 import { EthersOrchestrator } from "./ethers.orchestrator";
-import { MetadataAccessor } from "./metadata.accessor";
+import { EthersMetadataAccessor } from "./ethers-metadata.accessor";
 import { ListnerType } from "./enums/listener-type.enum";
 
 @Injectable()
@@ -13,7 +13,7 @@ export class EthersExplorer implements OnModuleInit {
     private readonly discoveryService: DiscoveryService,
     private readonly metadataScanner: MetadataScanner,
     private readonly ethersOrchestrator: EthersOrchestrator,
-    private readonly metadataAccessor: MetadataAccessor,
+    private readonly metadataAccessor: EthersMetadataAccessor,
   ) {}
 
   onModuleInit() {
@@ -72,7 +72,7 @@ export class EthersExplorer implements OnModuleInit {
   }
 
   private warnForNonStaticProviders(
-    wrapper: InstanceWrapper<any>,
+    wrapper: InstanceWrapper,
     instance: Record<string, Function>,
     key: string,
   ) {

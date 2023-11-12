@@ -4,7 +4,7 @@ import { getConnectionToken } from "../utils/token.util";
 
 export function getConnectionProvider(options: ConnectionOptions): Provider {
   return {
-    provide: getConnectionToken(), //getConnectionToken(options.name),
+    provide: getConnectionToken(options.name),
     useFactory: () => options.instance,
   };
 }

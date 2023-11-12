@@ -11,7 +11,7 @@ import {
 } from "./ethers.constants";
 
 @Injectable()
-export class MetadataAccessor {
+export class EthersMetadataAccessor {
   constructor(private readonly reflector: Reflector) {}
 
   getListenerTypeMetadata(target: any): ListnerType | undefined {

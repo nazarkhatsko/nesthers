@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { AbstractConnection } from "../common/connection";
 
 export interface ConnectionOptions {
-  // name?: string;
+  name?: string;
   instance: AbstractConnection;
 }
 
