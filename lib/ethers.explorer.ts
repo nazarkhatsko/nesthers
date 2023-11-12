@@ -16,11 +16,11 @@ export class EthersExplorer implements OnModuleInit {
     private readonly metadataAccessor: MetadataAccessor,
   ) {}
 
-  onModuleInit(): void {
+  onModuleInit() {
     this.explore();
   }
 
-  explore(): void {
+  explore() {
     const instanceWrappers: InstanceWrapper[] = [
       ...this.discoveryService.getControllers(),
       ...this.discoveryService.getProviders(),
@@ -57,18 +57,15 @@ export class EthersExplorer implements OnModuleInit {
   private lookupListeners(instance: Record<string, Function>, key: string) {
     const methodRef = instance[key];
     const typeMetadata = this.metadataAccessor.getListenerTypeMetadata(methodRef);
+    const wrapFunc = this.wrapFunctionInTryCatchBlock(methodRef, instance);
 
     switch (typeMetadata) {
       case ListnerType.BLOCK: {
         const onBlockMetadata = this.metadataAccessor.getListenerOnBlockMetadata(methodRef);
-        const wrapFunc = this.wrapFunctionInTryCatchBlock(methodRef, instance);
-
         return this.ethersOrchestrator.addOnBlock(wrapFunc, onBlockMetadata);
       }
       case ListnerType.EVENT: {
         const onEventMetadata = this.metadataAccessor.getListenerOnEventMetadata(methodRef);
-        const wrapFunc = this.wrapFunctionInTryCatchBlock(methodRef, instance);
-
         return this.ethersOrchestrator.addOnEvent(wrapFunc, onEventMetadata);
       }
     }
@@ -98,7 +95,7 @@ export class EthersExplorer implements OnModuleInit {
     }
   }
 
-  private wrapFunctionInTryCatchBlock(methodRef: Function, instance: object) {
+  private wrapFunctionInTryCatchBlock(methodRef: Function, instance: object): Function {
     return async (...args: unknown[]) => {
       try {
         await methodRef.call(instance, ...args);

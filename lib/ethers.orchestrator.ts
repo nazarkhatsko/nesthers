@@ -44,8 +44,7 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
         args: options.args,
         filter: options.options,
       });
-      options.ref.start();
-      this.ethersRegistry.addBlockListener(key, options.ref);
+      this.ethersRegistry.addListener(key, options.ref);
     }
   }
 
@@ -59,30 +58,32 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
         args: options.args,
         filter: options.options,
       });
-      this.ethersRegistry.addEventListener(key, options.ref);
+      this.ethersRegistry.addListener(key, options.ref);
     }
   }
 
   private unsubscribeOnBlocks() {
-    this.ethersRegistry
-      .getBlockListenerNames()
-      .forEach(name => this.ethersRegistry.deleteBlockListener(name));
+    const keys = Object.keys(this.onBlocks);
+    for (const key of keys) {
+      this.ethersRegistry.deleteListener(key);
+    }
   }
 
   private unsubscribeOnEvents() {
-    this.ethersRegistry
-      .getEventListenerNames()
-      .forEach(name => this.ethersRegistry.deleteEventListener(name));
+    const keys = Object.keys(this.onEvents);
+    for (const key of keys) {
+      this.ethersRegistry.deleteListener(key);
+    }
   }
 
-  addOnBlock(methodRef: Function, options: OnBlockMetadata, name: string = uuidv4()) {
+  addOnBlock(methodRef: any, options: OnBlockMetadata, name: string = uuidv4()) {
     this.onBlocks[name] = {
       target: methodRef,
       ...options,
     };
   }
 
-  addOnEvent(methodRef: Function, options: OnEventMetadata, name: string = uuidv4()) {
+  addOnEvent(methodRef: any, options: OnEventMetadata, name: string = uuidv4()) {
     this.onEvents[name] = {
       target: methodRef,
       ...options,
