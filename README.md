@@ -154,11 +154,6 @@ export class AppService {
 ```
 
 
-## Stay in touch
-
-- Author - [Nazar Khatsko](nazar.khatsko.dev@gmail.com)
-
-
 ## License
 
 NestEthers is [MIT licensed](LICENSE).
