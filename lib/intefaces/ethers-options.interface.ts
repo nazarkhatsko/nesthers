@@ -19,7 +19,7 @@ export interface EthersModuleOptionsContract {
   contract: typeof Contract;
 }
 
-export interface EthersModuleAsyncOptions extends Pick<ModuleMetadata, "imports"> {
-  inject?: any[];
-  useFactory?: (...args: any[]) => EthersModuleOptions | Promise<EthersModuleOptions>;
-}
+// export interface EthersModuleAsyncOptions extends Pick<ModuleMetadata, "imports" | "providers" | "exports"> {
+//   inject?: any[];
+//   useFactory?: (...args: any[]) => EthersModuleOptions | Promise<EthersModuleOptions>;
+// }

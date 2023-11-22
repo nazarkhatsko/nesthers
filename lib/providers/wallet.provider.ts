@@ -7,7 +7,7 @@ import { WalletBuilderOptions } from "../intefaces/wallet-builder-options.interf
 import { ETHERS_WALLET_BUILDER_OPTIONS } from "../ethers.constants";
 
 export function getWalletProvider(wallet: EthersModuleOptionsWallet, connection?: any): Provider {
-  const metadata = getMetadata<WalletBuilderOptions>(ETHERS_WALLET_BUILDER_OPTIONS, wallet);
+  const metadata = getMetadata<WalletBuilderOptions>(ETHERS_WALLET_BUILDER_OPTIONS, wallet.wallet);
 
   return {
     provide: getWalletToken(wallet.name),
@@ -18,6 +18,9 @@ export function getWalletProvider(wallet: EthersModuleOptionsWallet, connection?
   };
 }
 
-export function getWalletProviders(wallets: EthersModuleOptionsWallet[], connection?: any): Provider[] {
+export function getWalletProviders(
+  wallets: EthersModuleOptionsWallet[],
+  connection?: any,
+): Provider[] {
   return wallets.map(wallet => getWalletProvider(wallet, connection));
 }

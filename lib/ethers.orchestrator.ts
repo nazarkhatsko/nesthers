@@ -4,9 +4,9 @@ import { EthersRegistry } from "./ethers.registry";
 import { AbstractConnection } from "./common/connection";
 import { OnBlockMetadata } from "./intefaces/on-block-metadata.interface";
 import { OnEventMetadata } from "./intefaces/on-event-metadata.interface";
-import { getConnectionToken } from "./utils/token.util";
 import { BlockListener } from "./listeners/block.listener";
 import { EventListener } from "./listeners/event.listener";
+import { ETHERS_CONNECTION } from "./ethers.constants";
 
 type TargetHost = { target: any };
 type RefHost<T> = { ref?: T };
@@ -21,7 +21,7 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
 
   constructor(
     private readonly ethersRegistry: EthersRegistry,
-    @Inject(getConnectionToken()) private readonly connection: AbstractConnection,
+    @Inject(ETHERS_CONNECTION) private readonly connection: AbstractConnection,
   ) {}
 
   onApplicationBootstrap() {

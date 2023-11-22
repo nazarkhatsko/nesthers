@@ -30,7 +30,7 @@ export class EthersExplorer implements OnModuleInit {
       const { instance } = wrapper;
 
       if (!instance || !Object.getPrototypeOf(instance)) {
-        return;
+        continue;
       }
 
       const processMethod = (name: string) =>
@@ -45,7 +45,7 @@ export class EthersExplorer implements OnModuleInit {
           Object.getPrototypeOf(instance),
           processMethod,
         );
-        return;
+        continue;
       }
 
       this.metadataScanner

@@ -6,8 +6,14 @@ import { EthersModuleOptionsContract } from "../intefaces/ethers-options.interfa
 import { ContractBuilderMetadata } from "../intefaces/contract-builder-metadata.interface";
 import { ETHERS_CONTRACT_BUILDER_OPTIONS } from "../ethers.constants";
 
-export function getContractProvider(contract: EthersModuleOptionsContract, connection?: any): Provider {
-  const metadata = getMetadata<ContractBuilderMetadata>(ETHERS_CONTRACT_BUILDER_OPTIONS, contract);
+export function getContractProvider(
+  contract: EthersModuleOptionsContract,
+  connection?: any,
+): Provider {
+  const metadata = getMetadata<ContractBuilderMetadata>(
+    ETHERS_CONTRACT_BUILDER_OPTIONS,
+    contract.contract,
+  );
 
   return {
     provide: getContractToken(contract.name),
@@ -18,6 +24,9 @@ export function getContractProvider(contract: EthersModuleOptionsContract, conne
   };
 }
 
-export function getContractProviders(contracts: EthersModuleOptionsContract[], connection?: any): Provider[] {
+export function getContractProviders(
+  contracts: EthersModuleOptionsContract[],
+  connection?: any,
+): Provider[] {
   return contracts.map(contract => getContractProvider(contract, connection));
 }

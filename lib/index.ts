@@ -7,9 +7,9 @@ export * from "./ethers.orchestrator";
 export * from "./ethers.registry";
 
 // Common
+export * from "./common/connection";
 export * from "./common/wallet";
 export * from "./common/contract";
-export * from "./common/connection";
 export * from "./common/block";
 export * from "./common/event";
 
