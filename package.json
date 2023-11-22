@@ -1,7 +1,7 @@
 {
   "name": "nestethers",
   "version": "1.0.0",
-  "description": "NestEthers - Ethers module for Nest framework",
+  "description": "NestEthers is a convenient integration of the ethers.js library for NestJS",
   "author": "Nazar Khatsko <nazar.khatsko.dev@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
