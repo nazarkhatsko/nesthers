@@ -1,29 +1,29 @@
 {
-  "name": "nestethers",
+  "name": "nesthers",
   "version": "1.0.0",
-  "description": "NestEthers is a convenient integration of the ethers.js library for NestJS",
+  "description": "Nesthers is a convenient integration of the ethers.js library for NestJS",
   "author": "Nazar Khatsko <https://github.com/nazarkhatsko>",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "homepage": "https://github.com/nazarkhatsko/nestethers#readme",
-  "bugs": "https://github.com/nazarkhatsko/nestethers/issues",
+  "homepage": "https://github.com/nazarkhatsko/nesthers#readme",
+  "bugs": "https://github.com/nazarkhatsko/nesthers/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nazarkhatsko/nestethers"
+    "url": "https://github.com/nazarkhatsko/nesthers"
   },
   "keywords": [
-    "nestethers",
+    "nesthers",
     "ethers",
     "ethersjs",
     "ethers.js",
-    "evm",
-    "solidity",
-    "ethereum",
     "nest",
     "nestjs",
     "nest.js",
     "web3",
+    "evm",
+    "solidity",
+    "ethereum",
     "blockchain"
   ],
   "scripts": {
