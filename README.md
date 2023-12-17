@@ -1,9 +1,9 @@
-# NestEthers
+# Nesthers
 
 
 ## Description
 
-The NestEthers Module is a convenient integration of the [ethers.js](https://github.com/ethers-io/ethers.js) library into NestJS applications. This module aims to simplify the interaction with Ethereum blockchain features such as smart contracts, wallets, events, and more, providing a seamless and developer-friendly experience within the NestJS framework.
+The Nesthers Module is a convenient integration of the [ethers.js](https://github.com/ethers-io/ethers.js) library into NestJS applications. This module aims to simplify the interaction with Ethereum blockchain features such as smart contracts, wallets, events, and more, providing a seamless and developer-friendly experience within the NestJS framework.
 
 
 ## Installation
@@ -11,13 +11,13 @@ The NestEthers Module is a convenient integration of the [ethers.js](https://git
 Install the module via npm:
 
 ```sh
-npm install nestethers
+npm install nesthers
 ```
 
 Install the module via yarn:
 
 ```sh
-yarn add nestethers
+yarn add nesthers
 ```
 
 
@@ -33,7 +33,7 @@ yarn add nestethers
 1. Module initialization
 ```ts
 import { Module } from "@nestjs/common";
-import { EthersModule, JsonRpcConnection } from "nestethers";
+import { EthersModule, JsonRpcConnection } from "nesthers";
 
 @Module({
   imports: [
@@ -54,7 +54,7 @@ export class AppModule {}
 2. Inject Connection
 ```ts
 import { Injectable } from "@nestjs/common";
-import { InjectConnection, JsonRpcConnection } from "nestethers";
+import { InjectConnection, JsonRpcConnection } from "nesthers";
 
 @Injectable()
 export class AppService {
@@ -66,7 +66,7 @@ export class AppService {
 ```
 3. WalletBuilder
 ```ts
-import { WalletBuilder, Wallet } from "nestethers";
+import { WalletBuilder, Wallet } from "nesthers";
 
 @WalletBuilder({
   privateKey: "0x0...",
@@ -78,7 +78,7 @@ export class AliceWallet extends Wallet {
 4. InjectWallet
 ```ts
 import { Injectable } from "@nestjs/common";
-import { InjectWallet } from "nestethers";
+import { InjectWallet } from "nesthers";
 import { AliceWallet } from "./wallets/alice.wallet";
 
 @Injectable()
@@ -91,7 +91,7 @@ export class AppService {
 ```
 5. ContractBuilder
 ```ts
-import { ContractBuilder, Contract } from "nestethers";
+import { ContractBuilder, Contract } from "nesthers";
 
 @ContractBuilder({
   address: "0x0...",
@@ -112,7 +112,7 @@ export class TokenContract extends Contract {
 6. InjectContract
 ```ts
 import { Injectable } from "@nestjs/common";
-import { InjectContract } from "nestethers";
+import { InjectContract } from "nesthers";
 import { TokenContract } from "./contracts/token.contract";
 
 @Injectable()
@@ -126,7 +126,7 @@ export class AppService {
 7. OnBlock
 ```ts
 import { Injectable } from "@nestjs/common";
-import { OnBlock, Arg } from "nestethers";
+import { OnBlock, Arg } from "nesthers";
 
 @Injectable()
 export class AppService {
@@ -139,7 +139,7 @@ export class AppService {
 8. OnEvent
 ```ts
 import { Injectable } from "@nestjs/common";
-import { OnEvent, Arg } from "nestethers";
+import { OnEvent, Arg } from "nesthers";
 
 @Injectable()
 export class AppService {
@@ -156,4 +156,4 @@ export class AppService {
 
 ## License
 
-NestEthers is [MIT licensed](LICENSE).
+nesthers is [MIT licensed](LICENSE).
