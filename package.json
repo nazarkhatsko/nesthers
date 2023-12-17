@@ -1,6 +1,6 @@
 {
   "name": "nesthers",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "Nesthers is a convenient integration of the ethers.js library for NestJS",
   "author": "Nazar Khatsko <https://github.com/nazarkhatsko>",
   "license": "MIT",

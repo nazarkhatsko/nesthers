@@ -9,7 +9,7 @@ export class Wallet extends ethers.Wallet {
     } else if (options.privateKey !== "") {
       super(options.privateKey, connection);
     } else if (options.mnemonic && options.mnemonic.phrase.length > 1) {
-      super(ethers.Wallet.fromPhrase(options.mnemonic.phrase.join(" ")).privateKey, connection); // options.mnemonic.derivePath
+      super(ethers.Wallet.fromPhrase(options.mnemonic.phrase.join(" ")).privateKey, connection);
     } else {
       throw new Error("");
     }

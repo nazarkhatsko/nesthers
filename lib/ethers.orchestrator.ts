@@ -6,11 +6,8 @@ import { OnBlockMetadata } from "./intefaces/on-block-metadata.interface";
 import { OnEventMetadata } from "./intefaces/on-event-metadata.interface";
 import { BlockListener } from "./listeners/block.listener";
 import { EventListener } from "./listeners/event.listener";
-
-// import { ListnerFactory } from "./common/listener-factory";
 import { wrapFuncFilterArgs } from "./utils/tools.util";
 import { ETHERS_CONNECTION } from "./ethers.constants";
-// import { ListnerType } from "./enums/listener-type.enum";
 
 type TargetHost = { target: any };
 type RefHost<T> = { ref?: T };
@@ -41,10 +38,6 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
   private subscribeOnBlocks() {
     for (const key in this.onBlocks) {
       const options = this.onBlocks[key];
-      // options.ref = ListnerFactory.createListener(ListnerType.BLOCK, {
-      //   connection: this.connection,
-      //   callback: data => wrapFuncFilterArgs(data, options.target, options.args),
-      // });
       options.ref = new BlockListener({
         connection: this.connection,
         callback: (data) => wrapFuncFilterArgs(data, options.target, options.args),
@@ -56,11 +49,6 @@ export class EthersOrchestrator implements OnApplicationBootstrap, OnApplication
   private subscribeOnEvents() {
     for (const key in this.onEvents) {
       const options = this.onEvents[key];
-      // options.ref = ListnerFactory.createListener(ListnerType.EVENT, {
-      //   connection: this.connection,
-      //   filter: options.options,
-      //   callback: (data) => wrapFuncFilterArgs(data, options.target, options.args),
-      // });
       options.ref = new EventListener({
         connection: this.connection,
         filter: options.options,
