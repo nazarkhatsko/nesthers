@@ -4,5 +4,5 @@ import { Block } from "../common/block";
 
 export interface OnBlockMetadata {
   options: OnBlockOptions;
-  args: ArgMetadata<keyof Block>[];
+  args: ArgMetadata<Block>[];
 }

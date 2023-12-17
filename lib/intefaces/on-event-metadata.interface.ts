@@ -4,5 +4,5 @@ import { Event } from "../common/event";
 
 export interface OnEventMetadata {
   options: OnEventOptions;
-  args: ArgMetadata<keyof Event>[];
+  args: ArgMetadata<Event>[];
 }
